@@ -6,7 +6,7 @@ RUN apt install git -y
 COPY requirements.txt /requirements.txt
 
 RUN cd /
-RUN pip install -U pip && pip install -U -r requirements.txt
+RUN pip install -U -r requirements.txt
 WORKDIR /app
 
 COPY . .
@@ -14,4 +14,4 @@ COPY . .
 COPY start.sh /start.sh
 CMD ["/bin/bash", "/start.sh"]
 #EXPOSE 80
-EXPOSE 80
+#EXPOSE 80
