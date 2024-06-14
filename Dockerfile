@@ -1,17 +1,12 @@
-FROM python:3.9-slim-buster
+FROM mysterysd/wzmlx:latest
 
+WORKDIR /usr/src/app
+RUN chmod 777 /usr/src/app
 
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
-
-RUN cd /
-RUN pip install -U -r requirements.txt
-WORKDIR /app
+COPY requirements.txt .
+RUN pip3 install TgCrypto
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-COPY start.sh /start.sh
-CMD ["/bin/bash", "/start.sh"]
-#EXPOSE 80
-#EXPOSE 80
+CMD ["bash","start.sh"]
